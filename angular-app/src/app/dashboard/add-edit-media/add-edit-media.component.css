@@ -1,0 +1,15 @@
+.form-group{
+    margin: 1rem 0;
+}
+
+.form-group .form-label{
+    display: block;
+}
+
+
+form{
+    border: none !important;
+    padding: 5px !important;
+    border-radius: 0px !important;
+  }
+

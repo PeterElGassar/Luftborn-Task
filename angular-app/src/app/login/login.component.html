@@ -1,0 +1,88 @@
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-12 col-md-5 mx-auto text-center">
+      <p class="text-mute">Admin Account</p>
+      <p>Email :<strong>peter@gmail.com</strong></p>
+      <p>password :<strong>Pass@123</strong></p>
+    </div>
+
+  </div>
+  <div class="row mt-5">
+    <div class="col-12 col-md-8 col-lg-5 mx-auto">
+
+      <!-- Alert Message -->
+      <div class="mb-3" *ngIf="errorMessage != null">
+        <div class="alert alert-warning text-center">
+          <h5 class="my-0">{{this.errorMessage}} </h5>
+        </div>
+      </div>
+      <!-- End-Alert Message -->
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Email</label>
+
+          <input [ngClass]="( getEmail.touched && getEmail.invalid)  ?'danger-border' : ''" type="email"
+            class="form-control" name="email" formControlName="email" id="exampleInputEmail1" aria-describedby="phone">
+
+
+          <!-- Validation -->
+          <div>
+            <span *ngIf="getEmail.touched && getEmail.errors?.required" class="ml-2 text-danger"> Email is
+              required</span>
+            <span *ngIf="getEmail.dirty && getEmail.errors?.pattern" class="ml-2 text-danger">
+              invalid Email Format
+
+            </span>
+          </div>
+          <!-- End-Validation -->
+        </div>
+
+
+        <div class="mb-3">
+          <label class="form-label">Password</label>
+
+          <input type="password" class="form-control" name="password" formControlName="password"
+            [ngClass]="( getpassword.touched && getpassword.invalid)  ?'danger-border' : ''">
+          <!-- Validation -->
+          <div *ngIf="getpassword.touched">
+
+            <span *ngIf=" getpassword.errors?.required" class="ml-2 text-danger"> Password is
+              required</span>
+            <span *ngIf="getpassword.dirty && getpassword.errors?.pattern" class="ml-2 text-danger">
+              invalid Password Format
+              <br>
+              <strong>
+                expects atleast 1 small-case letter,
+                1 Capital letter, 1 digit, 1 special character
+                and the length should be between 6-10 characters
+              </strong>
+            </span>
+          </div>
+          <!-- End-Validation -->
+        </div>
+
+
+        <div class="mb-3">
+        </div>
+        <div class="text-center">
+
+          <button type="submit" [disabled]="loginForm.invalid" class="btn btn-primary w-50"
+            id="login-btn">Login</button>
+          <br>
+          <br>
+          <a routerLink="/register" class="btn btn-outline-primary  w-50">New Account ?</a>
+
+        </div>
+      </form>
+    </div>
+
+    <!-- <div class="col-12 col-md-8 col-lg-5 mx-auto">
+      <p>Form Status: {{loginForm.status}}</p>
+      <p>Email Dirty: {{getEmail.dirty}}</p>
+      <p>Email Touched: {{getEmail.touched}}</p>
+      <p>Email Status: {{getEmail.status}}</p>
+      <p>From Value: {{loginForm.value | json}}</p>
+    </div> -->
+  </div>
+</div>

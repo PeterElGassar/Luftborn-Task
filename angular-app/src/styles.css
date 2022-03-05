@@ -1,0 +1,23 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; background: #fdfdfd;}
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+.p-calendar {
+    width: 100% !important;
+}
+
+.img-thumbnail{
+    height: 200px !important;
+}
+
+.danger-border {
+    border: solid 1px red !important;
+  }
+
+  form{
+    border: 1px solid #4444;
+    padding: 2rem;
+    border-radius: 5px;
+  }

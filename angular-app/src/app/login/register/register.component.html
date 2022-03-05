@@ -1,0 +1,108 @@
+<div class="container">
+   
+    <div class="row mt-5">
+      <div class="col-12 col-md-8 col-lg-5 mx-auto">
+  
+          <!-- Alert Message -->
+          <div class="mb-3" *ngIf="errorMessage != null">
+            <div class="alert alert-warning text-center">
+              <h5 class="my-0">{{this.errorMessage}} </h5>
+            </div>
+          </div>
+          <!-- End-Alert Message -->
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+  
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Email</label>
+  
+            <input [ngClass]="( getEmail.touched && getEmail.invalid)  ?'danger-border' : ''" type="email"
+              class="form-control" name="email" formControlName="email" id="exampleInputEmail1" aria-describedby="phone">
+  
+  
+            <!-- Validation -->
+            <div>
+              <span *ngIf="getEmail.touched && getEmail.errors?.required" class="ml-2 text-danger"> Email is
+                required</span>
+              <span *ngIf="getEmail.dirty && getEmail.errors?.pattern" class="ml-2 text-danger">
+                invalid Email Format
+  
+              </span>
+            </div>
+            <!-- End-Validation -->
+          </div>
+  
+  
+          <div class="mb-3">
+            <label class="form-label">Password</label>
+  
+            <input type="password" class="form-control" name="password" formControlName="password"
+              [ngClass]="( getpassword.touched && getpassword.invalid)  ?'danger-border' : ''">
+            <!-- Validation -->
+            <div  *ngIf="getpassword.touched">
+  
+              <span *ngIf=" getpassword.errors?.required" class="ml-2 text-danger"> Password is
+                required</span>
+              <span *ngIf="getpassword.dirty && getpassword.errors?.pattern" class="ml-2 text-danger">
+                invalid Password Format
+                <br>
+                <strong>
+                  expects atleast 1 small-case letter,
+                  1 Capital letter, 1 digit, 1 special character
+                  and the length should be between 6-10 characters
+                </strong>
+              </span>
+            </div>
+            <!-- End-Validation -->
+          </div>
+  
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Confirm Password</label>
+  
+            <input type="password" class="form-control" name="ConfirmPassword" formControlName="confirmPassword"
+              aria-describedby="phone"
+              [ngClass]="( getConfPassword.touched && getConfPassword.invalid)  ? 'danger-border' : ''"
+              >
+  
+            <!-- Validation -->
+            <div *ngIf="getConfPassword.touched">
+              <span *ngIf=" getConfPassword.errors?.required" class="ml-2 text-danger"> Confirm
+                Password is required</span>
+              <span *ngIf="getConfPassword.dirty && getConfPassword.errors?.pattern" class="ml-2 text-danger">
+                invalid Password Format
+                <br>
+  
+                <strong>
+                  expects atleast 1 small-case letter,
+                  1 Capital letter, 1 digit, 1 special character
+                  and the length should be between 6-10 characters
+                </strong>
+  
+              </span>
+            </div>
+            <!-- End-Validation -->
+  
+          </div>
+  
+
+  
+          <div class="text-center">
+  
+            <button type="submit" [disabled]="registerForm.invalid" class="btn btn-primary w-50"
+              id="login-btn">register</button>
+              <br>
+              <br>
+              <a routerLink="/login" class="btn btn-outline-primary  w-50">have an Account ?</a>
+  
+          </div>
+        </form>
+      </div>
+      <!-- <div class="col-12 col-md-8 col-lg-5 mx-auto">
+        <p>Form Status: {{registerForm.status}}</p>
+        <p>Email Dirty: {{getEmail.dirty}}</p>
+        <p>Email Touched: {{getEmail.touched}}</p>
+        <p>Email Status: {{getEmail.status}}</p>
+        <p>From Value: {{registerForm.value | json}}</p>
+  
+      </div> -->
+    </div>
+  </div>
